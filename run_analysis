@@ -1,0 +1,63 @@
+# Import data and join it 
+
+#setwd("C:/Users/tejones/Desktop/Coursera/assignments/UCI HAR Dataset")
+
+values1 <- read.table("train/X_train.txt") 
+values2 <- read.table("test/X_test.txt") 
+X <- rbind(values1, values2) 
+subject1 <- read.table("train/subject_train.txt") 
+subject2 <- read.table("test/subject_test.txt") 
+S <- rbind(subject1, subject2) 
+Activities1 <- read.table("train/y_train.txt") 
+Activities2 <- read.table("test/y_test.txt") 
+Y <- rbind(Activities1, Activities2) 
+
+# Takes mean and standard deviation labels from features text file and merges it with the values from X
+features <- read.table("features.txt") 
+labels <- grep("-mean\\(\\)|-std\\(\\)", features[, 2]) 
+X <- X[, labels] 
+names(X) <- features[labels, 2] 
+names(X) <- gsub("\\(|\\)", "", names(X)) 
+names(X) <- tolower(names(X)) 
+
+
+# Applies activity names to data set
+
+activities <- read.table("activity_labels.txt") 
+activities[, 2] = gsub("_", "", tolower(as.character(activities[, 2]))) 
+Y[,1] = activities[Y[,1], 2] 
+names(Y) <- "activity" 
+
+# Labels the data set and writes it to a txt file 
+
+names(S) <- "subject" 
+
+cleaned <- cbind(S, Y, X) 
+
+write.table(cleaned, "All_data.txt") 
+
+# Determine the average for each variable for each activity and each subject. 
+
+uniSub = unique(S)[,1] 
+numSub = length(unique(S)[,1]) 
+numAct = length(activities[,1]) 
+numCols = dim(cleaned)[2] 
+result = cleaned[1:(numSub*numAct), ] 
+
+?colMeans
+
+row = 1 
+for (s in 1:numSub) { 
+  for (a in 1:numAct) { 
+    result[row, 1] = uniSub[s] 
+    result[row, 2] = activities[a, 2] 
+    tmp <- cleaned[cleaned$subject==s & cleaned$activity==activities[a, 2], ] 
+    result[row, 3:numCols] <- colMeans(tmp[, 3:numCols]) 
+    
+    row = row+1 
+    
+  } 
+  
+} 
+
+write.table(result, "All_data_sum.txt") 
