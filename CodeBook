@@ -1,0 +1,41 @@
+Import files include: 
+
+X_train.txt and y_test.txt (which is the measurement data)
+y_train.txt and y_test.txt (list of activities as numeric values)
+subject_train.txt and subject_test.txt (list of subjects as numeric values)
+features.txt (which is the column names for the data set)
+
+run_analysis.R Imports the information from the text files into variables in the script.  
+
+X(variable) is the actual measurement data.
+Y(variable) is the activities numbers  
+S(variable) is a list of subjects that did the activity (as a numerical value).  
+
+Each subject did each activity and there are mean and standard deviation data associated with each combinations of subject and activity.  
+  
+
+The data labels were extracted from features.txt and turned into the column headers for X.  The column names were cleaned up (paranthesis removed and turned 
+into all lower case letters).
+
+labels(variable) is the measurement titles.
+
+the activity labels were extracted from activity_labels.txt to correlate numbers to activities.
+
+activities(variable) is the activities and there numeric values
+
+1 is Walking
+2 is WALKING_UPSTAIRS
+3 IS WALKING_DOWNSTAIRS
+4 IS SITTING
+5 IS STANDING
+6 IS LAYING
+
+the activity titles were converted to lower case.  The number variables from Y that correlate to activities was combined with the activities variable so that all 
+activities could be labelled.  The column was named activity.
+
+The S variable column was named subject and it was merged with Y and X and exported as a txt file called "All_data.txt".  This file includes the subjects, the activities and the measurements.  
+
+A results table is created with all of the entries for each subject and all of their activities.
+
+A for loop was created to generate the mean of each measurement column for each subject for each activity.  The total number of entries should equal the number of subjects 
+multiplied by the number of activities.  30 subjects * 6 activities = 180 rows.  The data was exported as "All_data_sum.txt"
