@@ -1,9 +1,21 @@
-Import files include: 
+Files Used:  
 
-X_train.txt and y_test.txt (which is the measurement data)
-y_train.txt and y_test.txt (list of activities as numeric values)
-subject_train.txt and subject_test.txt (list of subjects as numeric values)
-features.txt (which is the column names for the data set)
+'features_info.txt': Shows information about the variables used on the feature vector.
+'features.txt': List of all features.
+'activity_labels.txt': Links the class labels with their activity name.
+'train/X_train.txt': Training set.
+'train/y_train.txt': Training labels.
+'test/X_test.txt': Test set.
+'test/y_test.txt': Test labels.
+'features.txt':  Column names for the data set
+
+The following files are available for the train and test data. Their descriptions are equivalent. 
+
+'train/subject_train.txt': Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30. 
+'train/Inertial Signals/total_acc_x_train.txt': The acceleration signal from the smartphone accelerometer X axis in standard gravity units 'g'. Every row shows a 128 element vector. The same description applies for the 'total_acc_x_train.txt' and 'total_acc_z_train.txt' files for the Y and Z axis. 
+'train/Inertial Signals/body_acc_x_train.txt': The body acceleration signal obtained by subtracting the gravity from the total acceleration. 
+'train/Inertial Signals/body_gyro_x_train.txt': The angular velocity vector measured by the gyroscope for each window sample. The units are radians/second. 
+
 
 run_analysis.R Imports the information from the text files into variables in the script.  
 
@@ -12,7 +24,6 @@ Y(variable) is the activities numbers
 S(variable) is a list of subjects that did the activity (as a numerical value).  
 
 Each subject did each activity and there are mean and standard deviation data associated with each combinations of subject and activity.  
-  
 
 The data labels were extracted from features.txt and turned into the column headers for X.  The column names were cleaned up (paranthesis removed and turned 
 into all lower case letters).
