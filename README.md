@@ -14,19 +14,14 @@ Imports the data and exports two text files.  All_data.txt is a list of subject,
 All_data_sum.txt is an aggregated summary of each subject for each activity.  
 
 
-***working directory should include the following hierarchy of folders and text files*** 
+***working directory should include UCIHAR Dataset folder and all of the folders and files listed below*** 
 
-UCIHAR Dataset (folder)
-	   activity_labels.txt
-	   features.txt
-	   test (folder)
-		X_test.txt
-	        y_test.txt
-		subject_test.txt
-	   train (folder)
-		X_train.txt
-	        y_tain.txt
-		subject_train.txt
+UCIHAR Dataset (folder) containing : activity_labels.txt, features.txt, test (folder), train (folder)
+
+train folder (within UCIHAR Dataset) should include: 	X_train.txt, y_train.txt, subject_train.txt
+
+test folder (within UCIHAR Dataset) should include: 	X_test.txt, y_test.txt, subject_test.txt
+
 
 ===================================================================
 
